@@ -6,13 +6,18 @@ import 'package:cc_clip_app/pages/GuidePage.dart';
 import 'package:cc_clip_app/util/UserStorage.dart';
 import 'package:cc_clip_app/config/Config.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:cc_clip_app/pages/EmbeddH5.dart';
+
+// WidgetsFlutterBinding.ensureInitialized();
+//runApp(EmbeddH5('百度','https://www.baidu.com'));
+// void main() => runApp(
+//   EmbeddH5()
+// );
 
 // 程序入口
 void main() => runApp(
-  Phoenix(
-    child: const MyApp()
-  ),
-);
+      Phoenix(child: const MyApp()),
+    );
 
 // 声明App为一个无状态容器
 class MyApp extends StatelessWidget {
@@ -25,18 +30,19 @@ class MyApp extends StatelessWidget {
       drawerWidth: MediaQuery.of(context).size.width * 0.75, // 侧边栏宽度比例
     );
     return FutureBuilder<dynamic>(
-        future: UserStorage().getStorage(StoreKeys.showGuide), // a previously-obtained Future<String> or null
+        future: UserStorage().getStorage(StoreKeys
+            .showGuide), // a previously-obtained Future<String> or null
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if(snapshot.data == null) return const SizedBox();
+          if (snapshot.data == null) return const SizedBox();
           return MaterialApp(
             title: 'Cc Clip',
             theme: ThemeData(
               useMaterial3: true,
               colorScheme: ColorScheme.fromSeed(
-                  seedColor: const Color(0xFF181818),  // seedColor 是种子颜色，由此派生相关主题下的其他颜色
+                  seedColor:
+                      const Color(0xFF181818), // seedColor 是种子颜色，由此派生相关主题下的其他颜色
                   primary: Colors.white,
-                  background: const Color(0xFF181818)
-              ),
+                  background: const Color(0xFF181818)),
               // 文本样式
               textTheme: TextTheme(
                 displayLarge: const TextStyle(
@@ -47,16 +53,9 @@ class MyApp extends StatelessWidget {
                     fontSize: 21,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white
-                ), // 标题样式
-                bodyMedium: GoogleFonts.lato(
-                    fontSize: 16,
-                    color: Colors.white
-                ),
-                bodyLarge: GoogleFonts.lato(
-                    fontSize: 16,
-                    color: Colors.white
-                ),
+                    color: Colors.white), // 标题样式
+                bodyMedium: GoogleFonts.lato(fontSize: 16, color: Colors.white),
+                bodyLarge: GoogleFonts.lato(fontSize: 16, color: Colors.white),
                 displaySmall: GoogleFonts.lato(),
               ),
 
@@ -65,19 +64,13 @@ class MyApp extends StatelessWidget {
                 suffixIconColor: Colors.grey[100],
                 errorMaxLines: 1,
                 errorStyle: TextStyle(
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  color: Colors.red[400]
-                ),
+                    fontSize: 12, letterSpacing: 1, color: Colors.red[400]),
                 helperStyle: TextStyle(
-                    fontSize: 12,
-                    letterSpacing: 1,
-                    color: Colors.grey[400]
-                ),
+                    fontSize: 12, letterSpacing: 1, color: Colors.grey[400]),
                 hintStyle: TextStyle(
-                    fontSize: 15,
-                    letterSpacing: 1,
-                    color: Colors.grey[600],
+                  fontSize: 15,
+                  letterSpacing: 1,
+                  color: Colors.grey[600],
                 ),
                 floatingLabelStyle: const TextStyle(
                   fontSize: 0,
@@ -87,29 +80,29 @@ class MyApp extends StatelessWidget {
                 // filled: true,
                 // fillColor: const Color(0xFF181818),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(width: 1.0, color: Colors.grey[200] as Color),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                ),
+                    borderSide: BorderSide(
+                        width: 1.0, color: Colors.grey[200] as Color),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 1.0, color: Colors.grey[200] as Color),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                ),
+                    borderSide: BorderSide(
+                        width: 1.0, color: Colors.grey[200] as Color),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
                 disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 1.0, color: Colors.grey[400] as Color),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                ),
-                errorBorder:  OutlineInputBorder(
-                  borderSide: BorderSide(width: 1.0, color: Colors.red[400] as Color),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                ),
-                focusedBorder:OutlineInputBorder(
-                  borderSide: BorderSide(width: 1.0, color: Colors.grey[100] as Color),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                ),
+                    borderSide: BorderSide(
+                        width: 1.0, color: Colors.grey[400] as Color),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
+                errorBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(width: 1.0, color: Colors.red[400] as Color),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 1.0, color: Colors.grey[100] as Color),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
                 focusedErrorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 1.0, color: Colors.red[800] as Color),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                ),
+                    borderSide:
+                        BorderSide(width: 1.0, color: Colors.red[800] as Color),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
                 contentPadding: const EdgeInsets.fromLTRB(10, 0, 4, 0),
               ),
             ),
